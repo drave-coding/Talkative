@@ -120,7 +120,7 @@ const CompanionForm = () => {
               <FormLabel>What should the companion help with?</FormLabel>
               <FormControl>
                 <Textarea
-                  placeholder="Any Topic"
+                  placeholder="Any Topic can be discussed"
                   {...field}
                   className="input"
                 />
