@@ -1,9 +1,20 @@
 "use client";
-// import { removeBookmark } from "@/lib/actions/companion.actions";
-// import { addBookmark } from "@/lib/actions/companion.actions";
+
+import { deleteCompanion } from "@/lib/actions/companions.action";
 import Image from "next/image";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { useRouter } from "next/navigation";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/components/ui/alert-dialog";
 
 interface CompanionCardProps {
   id: string;
@@ -24,28 +35,50 @@ const CompanionCard = ({
   color,
   bookmarked,
 }: CompanionCardProps) => {
-  const pathname = usePathname();
-  //   const handleBookmark = async () => {
-  //     if (bookmarked) {
-  //       await removeBookmark(id, pathname);
-  //     } else {
-  //       await addBookmark(id, pathname);
-  //     }
-  //   };
+  const router = useRouter();
+
+  const handleDelete = async () => {
+    try {
+      await deleteCompanion(id);
+      router.refresh();
+    } catch (error) {
+      alert("Failed to delete companion.");
+    }
+  };
   return (
     <article className="companion-card" style={{ backgroundColor: color }}>
       <div className="flex justify-between items-center">
         <div className="subject-badge">{subject}</div>
-        <button className="companion-bookmark" onClick={() => {}}>
-          <Image
-            src={
-              bookmarked ? "/icons/bookmark-filled.svg" : "/icons/bookmark.svg"
-            }
-            alt="bookmark"
-            width={12.5}
-            height={15}
-          />
-        </button>
+
+        <AlertDialog>
+          <AlertDialogTrigger asChild>
+            <button className="companion-bookmark">
+              <Image
+                src={"/icons/delete.svg"}
+                alt="delete"
+                width={15}
+                height={15}
+              />
+            </button>
+          </AlertDialogTrigger>
+          <AlertDialogContent>
+            <AlertDialogHeader>
+              <AlertDialogTitle>
+                Are you sure you want to delete?
+              </AlertDialogTitle>
+              <AlertDialogDescription>
+                This action cannot be undone. This will permanently delete this
+                companion.
+              </AlertDialogDescription>
+            </AlertDialogHeader>
+            <AlertDialogFooter>
+              <AlertDialogCancel>Cancel</AlertDialogCancel>
+              <AlertDialogAction onClick={handleDelete}>
+                Delete
+              </AlertDialogAction>
+            </AlertDialogFooter>
+          </AlertDialogContent>
+        </AlertDialog>
       </div>
 
       <h2 className="text-2xl font-bold">{name}</h2>

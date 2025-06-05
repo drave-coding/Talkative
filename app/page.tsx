@@ -1,8 +1,7 @@
 import CompanionCard from "@/components/CompanionCard";
 import CompanionsList from "@/components/CompanionList";
 import CTA from "@/components/CTA";
-import { Button } from "@/components/ui/button";
-import { recentSessions } from "@/constants";
+
 import {
   getAllCompanions,
   getRecentSessions,
@@ -12,7 +11,7 @@ import React from "react";
 
 const Page = async () => {
   const companions = await getAllCompanions({ limit: 3 });
-  const recentSessionsCompanions = await getRecentSessions(10);
+  const recentSessionsCompanions = await getRecentSessions(5);
   return (
     <main>
       <h1 className="text-2xl underline "> Popular Companions</h1>

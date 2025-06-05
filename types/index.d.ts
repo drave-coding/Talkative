@@ -6,15 +6,12 @@
 // };
 
 enum Subject {
-  maths = "maths",
-  language = "language",
-  science = "science",
-  history = "history",
-  coding = "coding",
-  geography = "geography",
-  economics = "economics",
-  finance = "finance",
-  business = "business",
+  frontend = "frontend",
+  backend = "backend",
+  dsa = "dsa",
+  interview = "interview",
+  behavioural = "behavioural",
+  innovation = "innovation",
 }
 
 type Companion = Models.DocumentList<Models.Document> & {
@@ -23,7 +20,6 @@ type Companion = Models.DocumentList<Models.Document> & {
   subject: Subject;
   topic: string;
   duration: number;
-  bookmarked: boolean;
 };
 
 interface CreateCompanion {

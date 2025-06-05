@@ -52,14 +52,14 @@ const Profile = async () => {
               />
               <p className="text-2xl font-bold">{sessionHistory.length}</p>
             </div>
-            <div>Lessons completed</div>
+            <div>Attempts</div>
           </div>
           <div className="border border-black rouded-lg p-3 gap-2 flex flex-col h-fit">
             <div className="flex gap-2 items-center">
               <Image src="/icons/cap.svg" alt="cap" width={22} height={22} />
               <p className="text-2xl font-bold">{companions.length}</p>
             </div>
-            <div>Companions created</div>
+            <div>Companions</div>
           </div>
         </div>
       </section>
