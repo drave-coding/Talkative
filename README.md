@@ -74,10 +74,9 @@ Built with [Next.js](https://nextjs.org), Talkative delivers a fast, responsive,
 /app                → App Router pages and layouts
 /components         → Reusable UI components
 /constants          → Predefined subject types, colors, voice options
-/hooks              → Custom React hooks
 /lib                → Utility functions and API helpers
 /public             → Static assets (logo, icons, images)
-/styles             → Global styles and Tailwind config
+/global.css         → Global styles and Tailwind config
 /types              → TypeScript interfaces and types
 ```
 
@@ -147,11 +146,13 @@ NEXT_PUBLIC_VAPI_WEB_TOKEN="..."
 
 ## 🖼️ Screenshots
 
-> *(Include actual images in your GitHub repo under /public/screenshots/ and reference them like below)*
 
-| Home Page | Companion Builder | Live Session | Profile & History |
-|-----------|-------------------|--------------|-------------------|
-| ![Home](public/screenshots/home.png) | ![Builder](public/screenshots/builder.png) | ![Session](public/screenshots/session.png) | ![Profile](public/screenshots/profile.png) |
+| Home Page | Companion Builder | Live Session |
+|-----------|-------------------|--------------|
+| ![T_DB](https://github.com/user-attachments/assets/80283ad3-22f6-4a20-8fb0-6081c2c5ec74) | ![T_card_2](https://github.com/user-attachments/assets/2b5c27c1-d1ca-48e1-90e3-98d305e93d75) | ![T_P](https://github.com/user-attachments/assets/60098f93-23de-49c6-a9c7-f3d89b1b18ed) |
+
+
+
 
 ---
 
