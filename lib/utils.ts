@@ -20,7 +20,7 @@ export const configureAssistant = (voice: string, style: string) => {
   const vapiAssistant: CreateAssistantDTO = {
     name: "Companion",
     firstMessage:
-        "Welcome! This is your interactive coding conversation platform. Today, we'll discuss '{{topic}}' in the domain of '{{subject}}'. Feel free to ask questions, share your thoughts, or explore ideas—let's have an engaging and insightful conversation!",
+        "Welcome! This is your interactive coding conversation platform. Today, we'll discuss '{{topic}}' in the domain of '{{subject}}'. Feel free to ask questions, share your thoughts, or explore ideas!",
     transcriber: {
       provider: "deepgram",
       model: "nova-3",

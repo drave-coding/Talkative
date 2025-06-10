@@ -20,6 +20,12 @@ const SubjectFilter = () => {
   const [subject, setSubject] = useState(query);
 
   useEffect(() => {
+    setSubject(query);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [query]);
+
+  useEffect(() => {
+    if (subject === query) return;
     let newUrl = "";
     if (subject === "all") {
       newUrl = removeKeysFromUrlQuery({
@@ -34,6 +40,7 @@ const SubjectFilter = () => {
       });
     }
     router.push(newUrl, { scroll: false });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [subject]);
 
   return (

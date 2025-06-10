@@ -4,6 +4,8 @@ import SearchInput from "@/components/SearchInput";
 import SubjectFilter from "@/components/SubjectFilter";
 import { getAllCompanions } from "@/lib/actions/companions.action";
 import { getSubjectColor } from "@/lib/utils";
+import { currentUser } from "@clerk/nextjs/server";
+import { redirect } from "next/navigation";
 
 const CompanionsLibrary = async ({ searchParams }: SearchParams) => {
   const filters = await searchParams;
@@ -11,7 +13,9 @@ const CompanionsLibrary = async ({ searchParams }: SearchParams) => {
   const topic = filters.topic ? filters.topic : "";
 
   const companions = await getAllCompanions({ subject, topic });
+  const user = await currentUser();
 
+  if (!user) redirect("/sign-in");
   return (
     <main>
       <section className="flex justify-between gap-4 max-sm:flex-col">
@@ -27,6 +31,7 @@ const CompanionsLibrary = async ({ searchParams }: SearchParams) => {
             key={companion.id}
             {...companion}
             color={getSubjectColor(companion.subject)}
+            currentUserId={user.id}
           />
         ))}
       </section>
